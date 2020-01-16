@@ -28,7 +28,7 @@ module FakeApi
   class Route
     attr_reader :path
     def initialize(path, value)
-      @path = path
+      @path  = path
       @value = value
     end
 
@@ -56,10 +56,6 @@ module FakeApi
       response = Response.new(name, value)
       response.instance_eval(&block) if block_given?
       @responses[name] = response
-    end
-
-    def [](name)
-      @responses[name]
     end
 
     def define_route(request_method, path, value = -> {}, &block)
@@ -140,5 +136,7 @@ FakeApi.setup do
   }
 
 end
+
+# to_return(:status => 200, :body => "", :headers => {})
 
 FakeApi.debug
