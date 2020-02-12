@@ -10,5 +10,5 @@ class FakeController < ApplicationController
       format.js   { render js: result }
     end
   end
-  
+
 end
