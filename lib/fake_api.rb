@@ -26,7 +26,8 @@ module FakeApi
   end
 
   class Route
-    attr_reader :path
+    attr_reader :path, :value
+
     def initialize(path, value)
       @path  = path
       @value = value
@@ -40,16 +41,13 @@ module FakeApi
   class FakeApiSchema
     attr_reader :responses, :routes
 
+    def FakeApiSchema.instance
+      @@instance ||= FakeApiSchema.new
+    end
+
     def initialize
       @responses = {}
       @routes    = {}
-    end
-
-    def handle(request_method, path:, params: {}, headers: {})
-      {
-        name: Faker::Name.name,
-        email: Faker::Internet.email
-      }
     end
 
     def define_response(name, value = -> {}, &block)
@@ -86,20 +84,9 @@ module FakeApi
     end
   end
 
-  mattr_accessor :schema
-  @@schema = FakeApiSchema.new
-
-  class << self
-    delegate_missing_to :schema
-  end
-
-  def self.setup(&block)
-    schema.instance_eval(&block)
-  end
-
   def FakeApi.debug
     puts "Responses:"
-    schema.responses.each do |name, response|
+    FakeApiSchema.instance.responses.each do |name, response|
       puts response.debug
       puts "=========="
     end
@@ -107,7 +94,7 @@ module FakeApi
     puts "---"
 
     puts "Routes:"
-    schema.routes.each do |request_method, info|
+    FakeApiSchema.instance.routes.each do |request_method, info|
       puts request_method
       info.each do |(path, route)|
         puts route.debug
@@ -117,26 +104,53 @@ module FakeApi
   end
 end
 
-FakeApi.setup do
+module FakeApi
+  class Handler
+    def Handler.handle(request_method, path:, params: {}, headers: {})
+      route = FakeApiSchema.instance.routes.fetch(request_method, {})["/#{path}"]
+      route.value.call
+    end
+  end
 
-  define_response :project, -> {
-    {
-      title: Faker::Name.title,
-      description: Faker::Data.description
-    }
-  }
+  class Model
+    mattr_accessor :schema
+    @@schema = FakeApiSchema.instance
 
-  get '/projects', -> { 10.times.response(:project) }
-  get '/my-last-project', -> {
-    {
-      data: {
-        project: response(:project)
-      }
-    }
-  }
+    class << self
+      delegate_missing_to :schema
+    end
 
+    def self.create_list(something, amount)
+      result = []
+      amount.times do |index|
+        result << response_or_value(something)
+      end
+      result
+    end
+
+    def self.response_or_value(something)
+      if something.is_a?(Symbol)
+        if response = FakeApiSchema.instance.responses[something]
+          response.value.call
+        else
+          nil
+        end
+      else
+        something
+      end
+    end
+  end
 end
 
-# to_return(:status => 200, :body => "", :headers => {})
+module FakeApi
+  extend ActiveSupport::Autoload
 
-FakeApi.debug
+  eager_autoload do
+    autoload :Handler
+    autoload :Route
+    autoload :Response
+    autoload :Model
+    autoload :Handler
+    autoload :FakeApiSchema
+  end
+end

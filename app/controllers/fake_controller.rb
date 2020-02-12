@@ -1,7 +1,7 @@
 class FakeController < ApplicationController
 
   def data
-    result = FakeApi.handle(request.method, path: params[:path], params: params, headers: request.headers)
+    result = FakeApi::Handler.handle(request.method, path: params[:path], params: params, headers: request.headers)
 
     respond_to do |format|
       format.html { render plain: result.inspect }
