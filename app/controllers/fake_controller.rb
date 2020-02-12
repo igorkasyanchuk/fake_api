@@ -5,8 +5,9 @@ class FakeController < ApplicationController
 
     respond_to do |format|
       format.html { render plain: result.inspect }
-      format.json { render json: result }
       format.xml  { render xml: result }
+      format.json { render json: result }
+      format.js   { render js: result }
     end
   end
   

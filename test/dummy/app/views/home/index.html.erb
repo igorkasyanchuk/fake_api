@@ -1,4 +1,14 @@
 <h1>Home#index</h1>
 <p>Find me in app/views/home/index.html.erb</p>
 
-<%= button_to "Fake API", "/fake_api/projects.json" %>
+<%= button_to "GET JSON", "/api/projects.json" %>
+
+<br/>
+
+<%= button_to "POST JSON", "/api/one.json", method: :post %>
+
+<br/>
+
+<%= button_to "GET JS", "/api/xxx/some-js.js", method: :get, remote: true %>
+
+
