@@ -6,7 +6,10 @@ module FakeApi
         route.value.call
       else
         # READ MORE: https://github.com/igorkasyanchuk/fake_api
-        raise "Route /#{path} was not found.<br/>Please edit your fake_api rounting file(s).<br/>Available:<br/><small style='font-size: 10px; line-height: 10px;'>#{available.presence || 'NONE'}</small>".html_safe
+        %Q{
+          Route "#{FakeApi::Engine.mounted_in}/#{path}" was not found. Please edit your fake_api rounting file(s).\n\nAvailable:
+          \n#{available.presence || 'NONE'}
+        }.strip
       end
     end
 
@@ -27,7 +30,7 @@ module FakeApi
           result << "#{method} #{FakeApi::Engine.mounted_in}#{k}"
         end
       end
-      result.sort.join("<br/>")
+      result.sort.join("\n")
     end
 
   end

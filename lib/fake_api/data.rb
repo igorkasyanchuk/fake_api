@@ -37,11 +37,11 @@ module FakeApi
       route("PUT", *options)
     end
 
-    def put(*options)
+    def patch(*options)
       route("PATCH", *options)
     end
 
-    def put(*options)
+    def delete(*options)
       route("DELETE", *options)
     end
 

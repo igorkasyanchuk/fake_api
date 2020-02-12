@@ -10,4 +10,10 @@ class RoutingOther < FakeApi::Routing
   get '/return-js', -> {
     "alert(1);"
   }
+
+  get '/hash', -> {
+    {
+      status: "OK"
+    }
+  }
 end
