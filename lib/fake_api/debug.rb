@@ -5,8 +5,7 @@ module FakeApi
     def Debug.status
       puts "Responses:"
       FakeApiData.instance.responses.each do |name, response|
-        puts response.debug
-        puts "=========="
+        puts response.name
       end
 
       puts "---"
@@ -15,9 +14,8 @@ module FakeApi
       FakeApiData.instance.routes.each do |request_method, info|
         puts request_method
         info.each do |(path, route)|
-          puts route.debug
+          puts route.route
         end
-        puts "=========="
       end
     end
 

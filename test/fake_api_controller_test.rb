@@ -7,6 +7,12 @@ class FakeApiControllerTest < ActionDispatch::IntegrationTest
     assert response.body.include?('[{"id":')
   end
 
+  test "should post to projects.json" do
+    post '/api/projects.json'
+    assert_response :success
+    assert response.body.include?('{"id":')
+  end
+
   test "should project.json" do
     get '/api/projects/1.json'
     assert_response :success

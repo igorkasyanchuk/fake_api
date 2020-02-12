@@ -3,7 +3,7 @@ module FakeApi
 
     def Handler.handle(method, path:, params: {}, headers: {})
       if route = Handler.resolve(method, path)
-        route.value.call
+        route.response.call
       else
         # READ MORE: https://github.com/igorkasyanchuk/fake_api
         %Q{

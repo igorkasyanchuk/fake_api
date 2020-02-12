@@ -12,37 +12,35 @@ module FakeApi
       @routes    = {}
     end
 
-    def response(name, value = -> {}, &block)
-      response = Response.new(name, value)
-      response.instance_eval(&block) if block_given?
+    def factory(name)
+      response = Factory.new(name: name)
       @responses[name] = response
     end
 
-    def route(request_method, path, value = -> {}, &block)
-      route = Route.new(path, value)
-      route.instance_eval(&block) if block_given?
+    def route(request_method, route:)
+      e = Route.new(route: route)
       @routes[request_method.upcase] ||= {}
-      @routes[request_method.upcase][path] = route
+      @routes[request_method.upcase][route] = e
     end
 
-    def get(*options)
-      route("GET", *options)
+    def get(path)
+      route("GET", route: path)
     end
 
-    def post(*options)
-      route("POST", *options)
+    def post(path)
+      route("POST", route: path)
     end
 
-    def put(*options)
-      route("PUT", *options)
+    def put(path)
+      route("PUT", route: path)
     end
 
-    def patch(*options)
-      route("PATCH", *options)
+    def patch(path)
+      route("PATCH", route: path)
     end
 
-    def delete(*options)
-      route("DELETE", *options)
+    def delete(path)
+      route("DELETE", route: path)
     end
 
     def object(something)
