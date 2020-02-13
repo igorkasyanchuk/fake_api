@@ -5,7 +5,8 @@ class Factory < FakeApi::Factoring
       id: rand(100),
       first_name: Faker::Name.first_name,
       last_name: Faker::Name.first_name,
-      avatar_url: Faker::Avatar.image(size: '128x128')
+      avatar_url: Faker::Avatar.image(size: '128x128'),
+      age: rand(100)
     }
   end
 
