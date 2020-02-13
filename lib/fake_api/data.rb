@@ -12,12 +12,12 @@ module FakeApi
       @routes    = {}
     end
 
-    def factory(name)
-      response = Factory.new(name: name)
+    def factory(name, &block)
+      response = Factory.new(name: name, value: block)
       @responses[name] = response
     end
 
-    def route(request_method, route:)
+    def route(request_method, route:, &block)
       e = Route.new(route: route)
       @routes[request_method.upcase] ||= {}
       @routes[request_method.upcase][route] = e
@@ -46,6 +46,8 @@ module FakeApi
     def object(something)
       response_or_value(something)
     end
+    alias :create :object
+    alias :build :object
 
     def create_list(something, amount)
       result = []
@@ -53,15 +55,15 @@ module FakeApi
       result
     end
 
-    def response_or_value(something)
-      if something.is_a?(Symbol)
-        if response = FakeApiData.instance.responses[something]
+    def response_or_value(e)
+      if e.is_a?(Symbol)
+        if response = FakeApiData.instance.responses[e]
           response.value.call
         else
           nil
         end
       else
-        something
+        e
       end
     end
   end

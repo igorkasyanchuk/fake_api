@@ -3,14 +3,33 @@ module FakeApi
 
     def Handler.handle(method, path:, params: {}, headers: {})
       if route = Handler.resolve(method, path)
-        route.response.call
+        result(
+          data: route.response.call,
+          status: route.status,
+          headers: route.headers,
+          cookies: route.cookies,
+          session: route.session
+        )
       else
         # READ MORE: https://github.com/igorkasyanchuk/fake_api
-        %Q{
-          Route "#{FakeApi::Engine.mounted_in}/#{path}" was not found. Please edit your fake_api rounting file(s).\n\nAvailable:
-          \n#{available.presence || 'NONE'}
-        }.strip
+        result(
+          data: %Q{
+            Route "#{FakeApi::Engine.mounted_in}/#{path}" was not found. Please edit your fake_api rounting file(s).\n\nAvailable:
+            \n#{available.presence || 'NONE'}
+          }.strip,
+          status: 500,
+        )        
       end
+    end
+
+    def Handler.result(data:, status: 200, headers: {}, cookies: {}, session: {})
+      OpenStruct.new(
+        data: data,
+        status: status,
+        headers: headers,
+        cookies: cookies,
+        session: session
+      )
     end
 
     private

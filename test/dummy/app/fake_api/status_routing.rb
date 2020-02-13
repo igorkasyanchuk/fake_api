@@ -1,4 +1,4 @@
-class RoutingOther < FakeApi::Routing
+class StatusRouting < FakeApi::Routing
   post('/post-status').and_return do
     {
       created: 'ok',

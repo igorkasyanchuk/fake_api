@@ -20,10 +20,10 @@ class Factory < FakeApi::Factoring
   end
 
   factory(:complex) do
-    [
+    {
       projects: create_list(:project, 2),
       user: object(:user)
-    ]
+    }
   end
 
 end

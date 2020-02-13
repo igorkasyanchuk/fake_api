@@ -5,6 +5,8 @@ class FakeApiControllerTest < ActionDispatch::IntegrationTest
     get '/api/projects.json'
     assert_response :success
     assert response.body.include?('[{"id":')
+    assert_equal response.status, 202
+    assert_equal response.headers["TOKEN"], "SECRET"
   end
 
   test "should post to projects.json" do
@@ -44,4 +46,12 @@ class FakeApiControllerTest < ActionDispatch::IntegrationTest
     post '/api/no-real.json'
     assert response.body.include?('Route "/api/no-real" was not found')
   end
+
+  test "should return cookies, session, headers" do
+    post '/api/auth'
+    assert_equal "{:status=>\"OK\"}", response.body
+    assert_equal "A", cookies["x"]
+    assert_equal "B", session["y"]
+    assert_equal "C", headers["token"]
+  end  
 end

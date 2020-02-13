@@ -1,7 +1,7 @@
 module FakeApi
   class Factory
     attr_reader :name, :value
-    def initialize(name, value = nil, &block)
+    def initialize(name:, value: nil, &block)
       @name  = name
       @value = value || block
     end
