@@ -7,6 +7,6 @@ class ProjectsRouting < FakeApi::Routing
   get(%r{/projects/\d+$}).and_return { object(:project) }
 
   post('/projects').and_return { object(:project).merge({created: 'ok'}) }
-  
+
   delete(%r{/projects/\d+$}).and_return { { result: :deleted } }.with_status(333)
 end

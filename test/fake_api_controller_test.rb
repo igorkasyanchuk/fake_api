@@ -53,5 +53,5 @@ class FakeApiControllerTest < ActionDispatch::IntegrationTest
     assert_equal "A", cookies["x"]
     assert_equal "B", session["y"]
     assert_equal "C", headers["token"]
-  end  
+  end
 end

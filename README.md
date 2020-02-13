@@ -87,7 +87,7 @@ class AppRouting < FakeApi::Routing
     .and_return { { status: "OK" } }
     .with_cookies({x: "A"})
     .with_session({y: "B"})
-    .with_headers({token: "C"})  
+    .with_headers({token: "C"})
 end
 ```
 
@@ -108,6 +108,8 @@ end
 
 - CI (travis, github actions, etc)
 - render ERB?
+- exclude from code converage generator and dummy app
+- make code coverage 100%
 
 ## Contributing
 
