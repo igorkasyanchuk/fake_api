@@ -6,7 +6,7 @@ Instead of creating many new controllers and actions, and sending random data li
 
 Gem has a syntax similar to rails routes, factory bot, and uses faker to generate dummy data.
 
-![Demo](/docs/fake_api.gif)
+![Demo](/docs/fake_api_demo.gif)
 
 Features:
 
