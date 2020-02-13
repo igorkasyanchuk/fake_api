@@ -16,6 +16,7 @@ Features:
   * including links to images if needed
 * manage cookies, session, headers with fake response
 * executes your factories in real-time, so you always get fresh and random data
+* has generator
 
 ## Usage
 
