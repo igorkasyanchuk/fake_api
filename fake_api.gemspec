@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.authors     = ["Igor Kasyanchuk"]
   spec.email       = ["igorkasyanchuk@gmail.com"]
   spec.homepage    = "https://github.com/igorkasyanchuk/fake_api"
-  spec.summary     = "Summary of FakeApi."
-  spec.description = "Description of FakeApi."
+  spec.summary     = "The fastest way to prototype API in your Rails app."
+  spec.description = "The fastest way to prototype API in your Rails app using Faker and mix of rails routes, factory bot and faker syntax"
   spec.license     = "MIT"
 
   spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
