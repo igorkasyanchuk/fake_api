@@ -18,7 +18,7 @@ Features:
 * executes your factories in real-time, so you always get fresh and random data
 * has generator
 
-## Usage
+## Installation & Usage
 
 Installation process is very simple.
 
