@@ -3,20 +3,24 @@ module FakeApi
   class Debug
 
     def Debug.status
-      puts "Responses:"
+      result = {}
+      result[:factories] = []
+      result[:responses] = {}
+
       FakeApiData.instance.responses.each do |name, response|
-        puts response.name
+        result[:factories] << name
       end
 
-      puts "---"
-
-      puts "Routes:"
       FakeApiData.instance.routes.each do |request_method, info|
-        puts request_method
+        result[:responses][request_method] ||= []
         info.each do |(path, route)|
-          puts route.route
+          result[:responses][request_method] << {
+            route: route.route,
+            status: route.status
+          }
         end
       end
+      result
     end
 
   end

@@ -13,10 +13,16 @@ class FakeApiControllerTest < ActionDispatch::IntegrationTest
     assert response.body.include?('{"id":')
   end
 
-  test "should project.json" do
+  test "should open project.json" do
     get '/api/projects/1.json'
     assert_response :success
     assert response.body.include?('{"id":')
+  end
+
+  test "should delete project.json" do
+    delete '/api/projects/1.json'
+    assert response.body.include?('{"result":')
+    assert_equal response.status, 333
   end
 
   test "should post url" do
@@ -36,7 +42,6 @@ class FakeApiControllerTest < ActionDispatch::IntegrationTest
 
   test "should fail for no real path" do
     post '/api/no-real.json'
-    #assert_response :error
     assert response.body.include?('Route "/api/no-real" was not found')
   end
 end

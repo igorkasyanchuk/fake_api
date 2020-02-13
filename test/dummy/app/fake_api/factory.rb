@@ -1,6 +1,6 @@
 class Factory < FakeApi::Factoring
 
-  factory(:user).returns do
+  factory(:user) do
     {
       id: rand(100),
       first_name: Faker::Name.first_name,
@@ -9,7 +9,7 @@ class Factory < FakeApi::Factoring
     }
   end
 
-  factory(:project).returns do
+  factory(:project) do
     {
       id: rand(1_000),
       title: Faker::Company.name,
@@ -19,7 +19,7 @@ class Factory < FakeApi::Factoring
     }
   end
 
-  factory(:complex).returns do
+  factory(:complex) do
     [
       projects: create_list(:project, 2),
       user: object(:user)
