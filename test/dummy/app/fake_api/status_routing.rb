@@ -8,7 +8,7 @@ class StatusRouting < FakeApi::Routing
   end
 
   get('/return-js').and_return do
-    "alert(1);"
+    "alert('returned from fake_api');"
   end
 
   get('/hash').and_return do

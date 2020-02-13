@@ -14,6 +14,13 @@ class FakeController < ApplicationController
       format.xml  { render xml: result.data }
       format.json { render json: result.data }
       format.js   { render js: result.data }
+      format.csv  {
+        require 'csv'
+        csv_string = CSV.generate(headers: false) do |csv|
+          result.data.each { |i| csv << i }
+        end
+        render plain: csv_string
+      }
     end
   end
 

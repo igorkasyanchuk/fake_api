@@ -96,7 +96,7 @@ end
 ## Routing Methods
 
 - `get/post/put/patch/delete` to define route
-- `and_return` to specify the response. This response will be converted to FORMAT (json, xml, etc)
+- `and_return` to specify the response. This response will be converted to FORMAT (json, xml, js, csv(for arrays) etc)
 - `with_cookies` to list returned cookies
 - `with_session` to list changes in session
 - `with_headers` to list returned headers
