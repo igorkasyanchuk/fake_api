@@ -10,5 +10,7 @@ require_relative './fake_api/factory.rb'
 require_relative './fake_api/handler.rb'
 require_relative './fake_api/debug.rb'
 
+require_relative './generators/fake_api_generator.rb' rescue nil
+
 module FakeApi
 end

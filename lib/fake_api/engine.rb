@@ -14,7 +14,6 @@ module FakeApi
     end
 
     def Engine.load_fake_api_dependencies
-      puts "Reloading ..."
       Dir["#{Rails.root}/app/fake_api/**/*.rb"].each do |file|
         require_dependency file
       end

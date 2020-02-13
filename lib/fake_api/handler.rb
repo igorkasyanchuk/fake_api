@@ -14,7 +14,7 @@ module FakeApi
         # READ MORE: https://github.com/igorkasyanchuk/fake_api
         result(
           data: %Q{
-            Route "#{FakeApi::Engine.mounted_in}/#{path}" was not found. Please edit your fake_api rounting file(s).\n\nAvailable:
+            Route "#{FakeApi::Engine.mounted_in}/#{path}" was not found. Please edit your fake_api rounting file(s) in app/fake_api/*.rb.\n\nAvailable:
             \n#{available.presence || 'NONE'}
           }.strip,
           status: 500,
