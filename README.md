@@ -27,7 +27,7 @@ Installation process is very simple.
 - mount gem in routes.rb `mount FakeApi::Engine => '/api'`
 - `rails g fake_api Product`. It will generate factory and routing files.
 - edit `app/fake_api/*.rb`, define your routing and factories.
-- open `localhost:300/api/<path>.json` (see step 5)
+- open `localhost:300/api/projects.json` (see step 5) or `localhost:300/api/projects.xml` (to return XML in API response)
 - profit :)
 
 You can keep your routing and factories in many files.
