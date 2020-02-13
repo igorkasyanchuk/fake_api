@@ -37,6 +37,7 @@ You can keep your routing and factories in many files.
 Sample of the factory:
 
 ```ruby
+# app/fake_api/factory.rb
 class Factory < FakeApi::Factoring
 
   # Example of User object
@@ -77,6 +78,7 @@ end
 And sample of routing:
 
 ```ruby
+# app/fake_api/app_routing.rb
 class AppRouting < FakeApi::Routing
   get('/projects').and_return           { create_list(:project, 5) }.with_status(202).with_headers({TOKEN: "SECRET"})
   get(%r{/projects/\d+$}).and_return    { object(:project) }
