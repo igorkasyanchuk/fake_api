@@ -18,7 +18,7 @@ module FakeApi
             \n#{available.presence || 'NONE'}
           }.strip,
           status: 500,
-        )        
+        )
       end
     end
 

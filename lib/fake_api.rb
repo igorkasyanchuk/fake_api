@@ -1,6 +1,5 @@
 require "fake_api/engine"
 require "faker"
-require "pry"
 require "ostruct"
 
 require_relative './fake_api/data.rb'
