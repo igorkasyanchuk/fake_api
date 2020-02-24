@@ -106,12 +106,25 @@ end
 - `with_session` to list changes in session
 - `with_headers` to list returned headers
 
+## Standalone mode
+
+Developing standalone version of the gem:
+
+```bash
+cd test
+rackup -p 3000 -o 0.0.0.0
+```
+
+Edit `config.ru` to change example code.
+
 ## TODO
 
 - CI (travis, github actions, etc)
 - render ERB?
 - exclude from code converage generator and dummy app
 - make code coverage 100%
+- access controller in the gem?
+- reload code in standalone app after code changes in dev mode
 
 ## Contributing
 

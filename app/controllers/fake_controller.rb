@@ -1,7 +1,14 @@
 class FakeController < ApplicationController
 
   def data
-    result = FakeApi::Handler.handle(request.method, path: params[:path], params: params, headers: request.headers)
+    result = FakeApi::Handler.handle(
+      request.method,
+      path: params[:path],
+      params: params,
+      headers: request.headers,
+      cookies: cookies,
+      session: session
+    )
 
     response.status = result.status
 
