@@ -1,5 +1,7 @@
 # Fake API
 
+[![Build Status](https://travis-ci.org/igorkasyanchuk/fake_api.svg?branch=master)](https://travis-ci.org/igorkasyanchuk/fake_api)
+
 The **fastest** way to prototype API with most real dummy data, and provide them to other team members.
 
 Instead of creating many new controllers and actions, and sending random data like `"First name #{rand(100)}"` you'll get real data for developing/testing.
