@@ -158,6 +158,8 @@ end
 run FakeApi::Standalone.app on: '/api'
 ```
 
+Theare is only one thing which is not convinient is a need to restart server after code changes.
+
 ## TODO
 
 - render ERB?
