@@ -4,6 +4,7 @@
 # create file
 # config.ru
 
+require 'rubygems'
 require 'fake_api/standalone'
 
 factory(:user) do

@@ -135,6 +135,7 @@ Since this is a rack app it could be just deployed to the server.
 # create file
 # config.ru
 
+require 'rubygems'
 require 'fake_api/standalone'
 
 factory(:user) do
