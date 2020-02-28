@@ -1,3 +1,9 @@
+# start it:
+# rackup -p 3000 -o 0.0.0.0
+
+# create file
+# config.ru
+
 require 'fake_api/standalone'
 
 factory(:user) do

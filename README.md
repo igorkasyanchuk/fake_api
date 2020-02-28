@@ -17,6 +17,7 @@ Features:
 * manage cookies, session, headers with fake response
 * executes your factories in real-time, so you always get fresh and random data
 * has generator
+* has standalone mode (see documentation for more details)
 
 ## Installation & Usage
 
@@ -116,6 +117,43 @@ rackup -p 3000 -o 0.0.0.0
 ```
 
 Edit `config.ru` to change example code.
+
+## Standalone mode
+
+This is an example how you can start just fake_api server and define your factories and responses just inside one single file.
+
+Please check example below and instructions how to start fakea_api in standalone mode.
+
+Since this is a rack app it could be just deployed to the server.
+
+```ruby
+# start it:
+# rackup -p 3000 -o 0.0.0.0
+
+# create file
+# config.ru
+
+require 'fake_api/standalone'
+
+factory(:user) do
+  {
+    id: rand(100),
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    age: rand(100)
+  }
+end
+
+get('/users').and_return do
+  create_list(:user, 5)
+end
+
+get(%r{/users/\d+$}).and_return do
+  object(:user)
+end
+
+run FakeApi::Standalone.app on: '/api'
+```
 
 ## TODO
 

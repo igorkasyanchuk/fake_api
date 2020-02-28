@@ -1,3 +1,7 @@
+- 0.9.1
+  - standalone mode, example, documentation
+  - removed pry from source code of gem inself
+
 - 0.9.0
   - initial release
 
