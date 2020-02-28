@@ -150,6 +150,7 @@ PLATFORMS
 DEPENDENCIES
   fake_api!
   pry
+  rails
   simplecov
   sqlite3
 

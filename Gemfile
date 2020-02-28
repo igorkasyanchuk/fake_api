@@ -15,3 +15,9 @@ gemspec
 # gem 'byebug', group: [:development, :test]
 
 gem 'pry'
+
+group :test do
+  gem 'simplecov'
+  gem 'sqlite3'
+  gem 'rails'
+end
