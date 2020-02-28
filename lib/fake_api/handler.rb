@@ -1,7 +1,7 @@
 module FakeApi
   class Handler
 
-    def Handler.handle(method, path:, params: {}, headers: {})
+    def Handler.handle(method, path:, params: {}, headers: {}, session: {}, cookies: {})
       if route = Handler.resolve(method, path)
         result(
           data: route.response.call,
@@ -18,7 +18,7 @@ module FakeApi
             \n#{available.presence || 'NONE'}
           }.strip,
           status: 500,
-        )        
+        )
       end
     end
 

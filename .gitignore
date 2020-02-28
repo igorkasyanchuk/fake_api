@@ -11,3 +11,5 @@ converage/
 *.gem
 
 coverage
+
+test/tmp

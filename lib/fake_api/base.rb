@@ -8,4 +8,5 @@ module FakeApi
   end
   Routing   = Base
   Factoring = Base
+  Inline    = Base
 end
