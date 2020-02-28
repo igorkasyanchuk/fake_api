@@ -157,7 +157,6 @@ run FakeApi::Standalone.app on: '/api'
 
 ## TODO
 
-- CI (travis, github actions, etc)
 - render ERB?
 - exclude from code converage generator and dummy app
 - make code coverage 100%
