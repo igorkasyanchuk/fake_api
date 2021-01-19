@@ -1,6 +1,7 @@
 # Fake API
 
 [![Build Status](https://travis-ci.org/igorkasyanchuk/fake_api.svg?branch=master)](https://travis-ci.org/igorkasyanchuk/fake_api)
+[![RailsJazz](https://github.com/igorkasyanchuk/rails_time_travel/blob/main/docs/my_other.svg?raw=true)](https://www.railsjazz.com)
 
 The **fastest** way to prototype API with most real dummy data, and provide them to other team members.
 
